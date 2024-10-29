@@ -103,15 +103,27 @@ var compatibilityMatrix = []CompatibilityEntry{
 			"dev-alerts",
 		},
 	},
+	// TODO(falox): fix this once the features are defined
+	// {
+	// 	PluginType:        uiv1alpha1.TypeMonitoring,
+	// 	MinClusterVersion: "v4.14",
+	// 	MaxClusterVersion: "",
+	// 	ImageKey:          "ui-monitoring",
+	// 	MinAcmVersion:     "v2.11",
+	// 	MaxAcmVersion:     "",
+	// 	Features: []string{
+	// 		"acm-alerting",
+	// 	},
+	// },
 	{
 		PluginType:        uiv1alpha1.TypeMonitoring,
 		MinClusterVersion: "v4.14",
 		MaxClusterVersion: "",
 		ImageKey:          "ui-monitoring",
-		MinAcmVersion:     "v2.11",
+		MinAcmVersion:     "",
 		MaxAcmVersion:     "",
 		Features: []string{
-			"acm-alerting",
+			"incidents",
 		},
 	},
 }
