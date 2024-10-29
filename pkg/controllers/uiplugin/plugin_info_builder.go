@@ -17,6 +17,7 @@ import (
 type UIPluginInfo struct {
 	Image               string
 	Korrel8rImage       string
+	HealthAnalyzerImage string
 	LokiServiceNames    map[string]string
 	TempoServiceNames   map[string]string
 	Name                string
@@ -165,7 +166,12 @@ func PluginInfoBuilder(ctx context.Context, k client.Client, plugin *uiv1alpha1.
 		return createLoggingPluginInfo(plugin, namespace, plugin.Name, image, compatibilityInfo.Features)
 
 	case uiv1alpha1.TypeMonitoring:
-		return createMonitoringPluginInfo(plugin, namespace, plugin.Name, image, compatibilityInfo.Features)
+		pluginInfo, err := createMonitoringPluginInfo(plugin, namespace, plugin.Name, image, compatibilityInfo.Features)
+		if err != nil {
+			return nil, err
+		}
+		pluginInfo.HealthAnalyzerImage = pluginConf.Images["health-analyzer"]
+		return pluginInfo, nil
 	}
 
 	return nil, fmt.Errorf("plugin type not supported: %s", plugin.Spec.Type)
