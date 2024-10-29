@@ -116,7 +116,10 @@ func main() {
 		os.Exit(1)
 	}
 
+	ctx := ctrl.SetupSignalHandler()
+
 	op, err := operator.New(
+		ctx,
 		operator.NewOperatorConfiguration(
 			operator.WithMetricsAddr(metricsAddr),
 			operator.WithHealthProbeAddr(healthProbeAddr),
@@ -136,7 +139,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	ctx := ctrl.SetupSignalHandler()
 	setupLog.Info("starting manager")
 	if err := op.Start(ctx); err != nil {
 		setupLog.Error(err, "terminating")
