@@ -237,26 +237,5 @@ func korrel8rClusterRole(name string) *rbacv1.ClusterRole {
 
 func korrel8rClusterRoleBinding(name string, serviceAccountName string, namespace string) *rbacv1.ClusterRoleBinding {
 	korrel8rClusterroleBindingName := name + "-view"
-	return &rbacv1.ClusterRoleBinding{
-		TypeMeta: metav1.TypeMeta{
-			APIVersion: rbacv1.SchemeGroupVersion.String(),
-			Kind:       "ClusterRoleBinding",
-		},
-		ObjectMeta: metav1.ObjectMeta{
-			Name: korrel8rClusterroleBindingName,
-		},
-		Subjects: []rbacv1.Subject{
-			{
-				APIGroup:  corev1.SchemeGroupVersion.Group,
-				Kind:      "ServiceAccount",
-				Name:      serviceAccountName + "-sa",
-				Namespace: namespace,
-			},
-		},
-		RoleRef: rbacv1.RoleRef{
-			APIGroup: rbacv1.SchemeGroupVersion.Group,
-			Kind:     "ClusterRole",
-			Name:     korrel8rClusterroleBindingName,
-		},
-	}
+	return newClusterRoleBinding(namespace, serviceAccountName+"-sa", korrel8rClusterroleBindingName, korrel8rClusterroleBindingName)
 }

@@ -15,32 +15,6 @@ const (
 	volumeMountName = name + "-tls"
 )
 
-// TODO(falox): unify with korrel8rClusterRoleBinding()
-func newHealthAnalyzerClusterRoleBinding(namespace string, serviceAccountName string, roleName string, crbName string) *rbacv1.ClusterRoleBinding {
-	return &rbacv1.ClusterRoleBinding{
-		TypeMeta: metav1.TypeMeta{
-			APIVersion: rbacv1.SchemeGroupVersion.String(),
-			Kind:       "ClusterRoleBinding",
-		},
-		ObjectMeta: metav1.ObjectMeta{
-			Name: crbName,
-		},
-		Subjects: []rbacv1.Subject{
-			{
-				APIGroup:  corev1.SchemeGroupVersion.Group,
-				Kind:      "ServiceAccount",
-				Name:      serviceAccountName,
-				Namespace: namespace,
-			},
-		},
-		RoleRef: rbacv1.RoleRef{
-			APIGroup: rbacv1.SchemeGroupVersion.Group,
-			Kind:     "ClusterRole",
-			Name:     roleName,
-		},
-	}
-}
-
 func newHealthAnalyzerPrometheusRole(namespace string) *rbacv1.Role {
 	role := &rbacv1.Role{
 		TypeMeta: metav1.TypeMeta{
