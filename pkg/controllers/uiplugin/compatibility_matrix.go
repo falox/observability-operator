@@ -140,6 +140,7 @@ var compatibilityMatrix = []CompatibilityEntry{
 		ImageKey:          "ui-monitoring",
 		MinAcmVersion:     "",
 		MaxAcmVersion:     "",
+	 	SupportLevel:      TechPreview,
 		Features: []string{
 			"acm-alerting",
 			"incidents",
