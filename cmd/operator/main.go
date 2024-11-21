@@ -43,7 +43,7 @@ var defaultImages = map[string]string{
 	"ui-troubleshooting-panel": "quay.io/openshift-observability-ui/troubleshooting-panel-console-plugin:v0.3.0",
 	"ui-distributed-tracing":   "quay.io/openshift-observability-ui/distributed-tracing-console-plugin:v0.3.0",
 	"ui-logging":               "quay.io/openshift-observability-ui/logging-view-plugin:v6.0.0",
-	"ui-monitoring":            "quay.io/rh-ee-pyurkovi/monitoring-plugin@sha256:4a0378df3d79e48dcd5b209a654238b0969a10d092348dd0e2834b3c3505f3bc",
+	"ui-monitoring":            "quay.io/rh-ee-pyurkovi/monitoring-plugin@sha256:cafe7a1f2561a10c3cba3c914006150ccef8f591840461e3e0f21920716b9b93",
 	"korrel8r":                 "quay.io/korrel8r/korrel8r:0.7.2",
 	"health-analyzer":          "quay.io/openshiftanalytics/cluster-health-analyzer:v0.2.0",
 }
