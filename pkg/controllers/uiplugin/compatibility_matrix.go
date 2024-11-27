@@ -135,12 +135,12 @@ var compatibilityMatrix = []CompatibilityEntry{
 	// },
 	{
 		PluginType:        uiv1alpha1.TypeMonitoring,
-		MinClusterVersion: "v4.14",
+		MinClusterVersion: "v4.17",
 		MaxClusterVersion: "",
 		ImageKey:          "ui-monitoring",
 		MinAcmVersion:     "",
 		MaxAcmVersion:     "",
-	 	SupportLevel:      TechPreview,
+		SupportLevel:      TechPreview,
 		Features: []string{
 			"acm-alerting",
 			"incidents",
